@@ -1,0 +1,45 @@
+* {
+    border: 1px solid red;
+}
+
+/* Seletor de texto */
+h1 {
+    color: green;
+}
+
+/* Seletor de classe */
+.verde {
+    color: green;
+}
+
+/* Css específico para o parágrafos */
+p.verde {
+    color: greenyellow;
+}
+
+/* Seletor por id */
+#cabecalho {
+    border: 1px solid blue;
+}
+
+/* Seletor de pai>filho  */
+li>a {
+    color: red;
+    text-decoration: none;
+}
+
+/* Seletor de pai>descendente */
+li a {
+    color: red;
+    text-decoration: none;
+}
+
+/* Seletor por irmãos */
+h1+p {
+    color: red;
+}
+
+/* Seletor de parentes(próximo) */
+h1~p {
+    color: darkcyan;
+}
