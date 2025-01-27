@@ -16,6 +16,11 @@
         $peso = 66.5;
         // bool
         $fumante_sn = false; // (true = 1) or (false = vazio)
+
+        // ... lógica ...
+
+        // Mudando o valor da variável
+        $idade = 25;
     ?>
 
     <h1>Ficha cadastral</h1>
