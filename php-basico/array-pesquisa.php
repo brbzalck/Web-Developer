@@ -43,6 +43,9 @@
         // jogando um array(var) de nome $lista_frutas que agora
         // se chama frutas para dentro de outro array $lista_coisas
         $lista_coisas = [
+            // para atribuir valor a nova array dentro da criação
+            // da própria array, usa-se o sinal de atribuição
+            // $lista_coisas = ['cria_array' => (atribui)]
             'frutas' => $lista_frutas,
             'pessoas' => ['Lucas', 'Maria', 'João', 'Letícia'] 
         ];
