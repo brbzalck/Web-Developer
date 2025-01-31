@@ -32,6 +32,7 @@
               Login
             </div>
             <div class="card-body">
+              <!-- Post → Para formulários com informações sensíveis. -->
               <form action="valida_login.php" method="post">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
@@ -39,8 +40,8 @@
                 <div class="form-group">
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
-                
-
+                <!-- isset para verificar por meio do $_GET se está setado && se é == 'erro' -->
+                <!-- Get → Para buscas e requisições simples. -->
                 <?php if(isset($_GET['login']) and $_GET['login'] == 'erro') { ?>
                 <div class="text-danger">
                   Usuário ou senha inválido(s)
