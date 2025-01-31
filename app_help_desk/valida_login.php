@@ -1,5 +1,8 @@
 <?php
 
+    // Iniciando sessão que fica armazenada no lado do servidor
+    session_start();
+
     // variável que verifica se a autenticação foi realizada
     $usuario_autenticado = false;
 
@@ -25,9 +28,13 @@
 
     if($usuario_autenticado) {
         echo 'Usuário autenticado';
+        // Armazenando valor para autenticado
+        $_SESSION['autenticado'] = 'SIM';
     } else {
         // função cabeçalho joga o usuário para o local: index.php?(com parâmetro que pode ser resgatado)
-       header('Location: index.php?login=erro');
+        // Armazenando valor para autenticado
+        $_SESSION['autenticado'] = 'NAO';
+        header('Location: index.php?login=erro');
     }
 
 

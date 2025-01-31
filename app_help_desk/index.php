@@ -47,6 +47,13 @@
                   Usuário ou senha inválido(s)
                 </div>
                 <?php } ?>
+                <!-- verificando se login está setado e se seu valor é erro2 -->
+                 <!-- erro2 está tratando requisição de login para páginas restritas -->
+                <?php if(isset($_GET['login']) and $_GET['login'] == 'erro2') { ?>
+                <div class="text-danger">
+                  Por favor, faça o login.
+                </div>
+                <?php } ?>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
             </div>
