@@ -30,6 +30,8 @@
         echo 'Usuário autenticado';
         // Armazenando valor para autenticado
         $_SESSION['autenticado'] = 'SIM';
+        $_SESSION['flag1'] = 'SIM';
+        $_SESSION['flag2'] = 'NAO';
         // se autenticado, direciona para home
         header('Location: home.php');
     } else {
