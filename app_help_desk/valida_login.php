@@ -30,6 +30,8 @@
         echo 'Usuário autenticado';
         // Armazenando valor para autenticado
         $_SESSION['autenticado'] = 'SIM';
+        // se autenticado, direciona para home
+        header('Location: home.php');
     } else {
         // função cabeçalho joga o usuário para o local: index.php?(com parâmetro que pode ser resgatado)
         // Armazenando valor para autenticado
