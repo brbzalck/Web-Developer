@@ -13,8 +13,22 @@ $arquivo = fopen('arquivo.hd', 'r');
 while(!feof($arquivo)) {
   // fgets busca por dados que existem em determinada linha
   $registro = fgets($arquivo);
-  // salvando resultado do fgets na array chamados
-  $chamados[] = $registro;
+  // se a linha for não estiver vazia
+  if(!empty($registro)) {
+    // separar dentro da array $dados a str $registro separada por #
+    $dados = explode('#', $registro);
+    // se o perfil_id for == 1 ele é um adm
+    if($_SESSION['perfil_id'] == 1) {
+      // adicionando na array $chamados, a array $dados com direito a todos os chamados
+      $chamados[] = $dados;
+    }
+    // SE o índice que corresponde ao id do usuário($dados[0]) existir
+    // E esse mesmo índice for igual ao id armazenado na sessão como id
+    // id de dados = id de índice -> exibi somente a linha correspondente ao seu próprio id
+    if (isset($dados[0]) and $dados[0] == $_SESSION['id']) {
+      $chamados[] = $dados;
+    }
+  }
 }
 
 // fechar o arquivo aberto
@@ -70,34 +84,33 @@ fclose($arquivo);
 
                 <?php 
                   
-                  // função explode para separar a str pelos # e salvar em uma array essa divisão
-                  $chamado_dados = explode('#', $chamado);
+                  // // função explode para separar a str pelos # e salvar em uma array essa divisão
+                  // $chamado_dados = explode('#', $chamado);
 
-                  // se o perfil_id do usuário for == 2(usuário)
-                  if($_SESSION['perfil_id'] == 2) {
-                    // só vamos exibir o chamado se for criado pelo próprio usuário
-                    // se o id de session for diferente do id do chamado
-                    if($_SESSION['id'] != $chamado_dados[0]) {
-                      // não exibe esse chamado do foreach, indo pro próximo chamado
-                      continue;
-                    }
+                  // // se o perfil_id do usuário for == 2(usuário)
+                  // if($_SESSION['perfil_id'] == 2) {
+                  //   // só vamos exibir o chamado se for criado pelo próprio usuário
+                  //   // se o id de session for diferente do id do chamado
+                  //   if($_SESSION['id'] != $chamado_dados[0]) {
+                  //     // não exibe esse chamado do foreach, indo pro próximo chamado
+                  //     continue;
+                  //   }
 
-                  }
+                  // }
 
                   // contando a qtd de índice na array, para não quebrar o código caso $chamados_dados < 3
                   // por conta do PHP_EOL, usado para salvar dados e quebrar linha
                   // o último elemento da array $chamado_dados = 0 porém vazia
-                  if (count($chamado_dados) < 3) {
+                  if (count($dados) < 3) {
                     continue;
                   }
                   
                 ?>
-                <!--  -->
                 <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
-                  <p class="card-text"><?= $chamado_dados[3] ?></p>
+                  <h5 class="card-title"><?= $chamado[1] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado[2] ?></h6>
+                  <p class="card-text"><?= $chamado[3] ?></p>
 
                 </div>
               </div>
