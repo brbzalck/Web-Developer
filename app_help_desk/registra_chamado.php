@@ -22,7 +22,8 @@
 
     // abrindo o arquivo com a função fopen e método 'a' para leitura e escrita no arquivo.hd
     // salvando abertura do arquivo L/E numa variável p/ ser usada em fwrite e fclose
-    $arquivo = fopen('arquivo.hd', 'a');
+    $arquivo = fopen('../../../app_help_desk/arquivo.hd', 'a');
+    // protegendo arquivos sigilosos escondendo arquivos
 
     // escrevendo no arquivo aberto texto de $_POST já formatado 
     fwrite($arquivo, $texto);

@@ -6,7 +6,8 @@
 $chamados = [];
 
 // abrir o arquivo.hd, no modo leitura
-$arquivo = fopen('arquivo.hd', 'r');
+$arquivo = fopen('../../../app_help_desk/arquivo.hd', 'r');
+// protegendo arquivos sigilosos escondendo arquivos
 
 // enquanto houver registros ou linhas a serem recuperados
 // função feof -> END OF FILE percorre o arquivo até o final, linha por linha
