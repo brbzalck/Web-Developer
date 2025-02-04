@@ -1,5 +1,8 @@
 <!-- usando require_once pois é essêncial que haja autenticação para segurança do código -->
-<?php require_once "validador_acesso.php" ?>
+<?php require_once "validador_acesso.php"; 
+// // dentro do require já existe um session_start();
+// // oque já possibilita acessar a variável
+?>
 
 <html>
   <head>

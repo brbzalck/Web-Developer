@@ -73,6 +73,17 @@ fclose($arquivo);
                   // função explode para separar a str pelos # e salvar em uma array essa divisão
                   $chamado_dados = explode('#', $chamado);
 
+                  // se o perfil_id do usuário for == 2(usuário)
+                  if($_SESSION['perfil_id'] == 2) {
+                    // só vamos exibir o chamado se for criado pelo próprio usuário
+                    // se o id de session for diferente do id do chamado
+                    if($_SESSION['id'] != $chamado_dados[0]) {
+                      // não exibe esse chamado do foreach, indo pro próximo chamado
+                      continue;
+                    }
+
+                  }
+
                   // contando a qtd de índice na array, para não quebrar o código caso $chamados_dados < 3
                   // por conta do PHP_EOL, usado para salvar dados e quebrar linha
                   // o último elemento da array $chamado_dados = 0 porém vazia
@@ -84,9 +95,9 @@ fclose($arquivo);
                 <!--  -->
                 <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?= $chamado_dados[0] ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
-                  <p class="card-text"><?= $chamado_dados[2] ?></p>
+                  <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
+                  <p class="card-text"><?= $chamado_dados[3] ?></p>
 
                 </div>
               </div>

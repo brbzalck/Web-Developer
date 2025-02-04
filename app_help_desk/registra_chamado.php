@@ -5,6 +5,9 @@
     //     print_r($_POST);
     // echo '</pre>';
 
+    // abrindo sessão para adicionar índice id na linha 20
+    session_start();
+
     $titulo = str_replace('#', '-', $_POST['titulo']);
     $categoria = str_replace('#', '-', $_POST['categoria']);
     $descricao = str_replace('#', '-', $_POST['descricao']);
@@ -14,7 +17,7 @@
     // $array_attr_fim = implode('#', $array_attr);
 
     // PHP_EOL > constante do php que faz quebra de linha em determinada str
-    $texto = $titulo .'#'. $categoria .'#'. $descricao . PHP_EOL;
+    $texto = $_SESSION['id'] . '#' . $titulo .'#'. $categoria .'#'. $descricao . PHP_EOL;
 
 
     // abrindo o arquivo com a função fopen e método 'a' para leitura e escrita no arquivo.hd
