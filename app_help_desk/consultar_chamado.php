@@ -1,5 +1,28 @@
 <?php require_once "validador_acesso.php" ?>
 
+<?php
+
+// array vazia para manipulação de dados
+$chamados = [];
+
+// abrir o arquivo.hd, no modo leitura
+$arquivo = fopen('arquivo.hd', 'r');
+
+// enquanto houver registros ou linhas a serem recuperados
+// função feof -> END OF FILE percorre o arquivo até o final, linha por linha
+while(!feof($arquivo)) {
+  // fgets busca por dados que existem em determinada linha
+  $registro = fgets($arquivo);
+  // salvando resultado do fgets na array chamados
+  $chamados[] = $registro;
+}
+
+// fechar o arquivo aberto
+fclose($arquivo);
+
+?>
+
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -41,24 +64,35 @@
             </div>
             
             <div class="card-body">
-              
-              <div class="card mb-3 bg-light">
+
+              <!-- para cada chamado em chamados { conteúdo html } -->
+              <?php foreach($chamados as $chamado) { ?>
+
+                <?php 
+                  
+                  // função explode para separar a str pelos # e salvar em uma array essa divisão
+                  $chamado_dados = explode('#', $chamado);
+
+                  // contando a qtd de índice na array, para não quebrar o código caso $chamados_dados < 3
+                  // por conta do PHP_EOL, usado para salvar dados e quebrar linha
+                  // o último elemento da array $chamado_dados = 0 porém vazia
+                  if (count($chamado_dados) < 3) {
+                    continue;
+                  }
+                  
+                ?>
+                <!--  -->
+                <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+                  <h5 class="card-title"><?= $chamado_dados[0] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
+                  <p class="card-text"><?= $chamado_dados[2] ?></p>
 
                 </div>
               </div>
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
+              <!-- fechando a instrução do foreach que contem html e php -->
+              <?php } ?>
 
               <div class="row mt-5">
                 <div class="col-6">
