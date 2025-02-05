@@ -4,36 +4,60 @@
     class Funcionario {
 
         // atributos
-        public $nome = 'José';
-        public $telefone = '11 99999-8888';
-        public $numFilhos = 2;
+        public $nomePar = null;
+        public $telefonePar = null;
+        public $numFilhosPar = null;
+
+        // getters setters
+        // settando um argumento de setNome() para o atributo da classe $nomePar
+        function setNome($nomeArg) {
+            $this->nomePar = $nomeArg;
+        }
+        function setNumFilhos($numFilhosArg) {
+            $this->numFilhosPar = $numFilhosArg;
+        }
+
+        function setTelefonePar($telefoneArg) {
+            $this->telefonePar = $telefoneArg;
+        }
+
+        function getNome() {
+            return $this->nomePar;
+        }
+
+        function getNumFilhosPar() {
+            return $this->numFilhosPar;
+        }
+
+        function getTelefonePar() {
+            return $this->telefonePar;
+        }
 
         // métodos
         // função que recupera os atributos da classe e retorna uma str
         function resumirCadFunc() {
             // $this para acessar atributos da classe
-            return "$this->nome possui $this->numFilhos filho(s)";
+            return "$this->nomePar possui $this->numFilhosPar filho(s)";
         }
 
         // função que recebe argumento para modificar num filhos
         function modificarNumFilhos($numMod) {
-            $this->numFilhos = $numMod;
+            $this->numFilhosPar = $numMod;
         }
     }
 
+    // criando nova instância de funcionário -> novo funcionário = x
     $y = new Funcionario();
-    // $instancia(->) para acessar métodos e atributos da classe
-    echo $y->resumirCadFunc().'<br/>';
-
-    // jogando para dentro da função numero de filhos atualizado
-    $y->modificarNumFilhos(3);
-    echo $y->resumirCadFunc().'<br/>';
-    echo '<hr>';
+    $y->setNome('José');
+    $y->setNumFilhos(3);
+    // echo $y->resumirCadFunc();
+    // usando as função get que retorna o valor dos atributos do objeto
+    echo $y->getNome() . ' possui ' . $y->getNumFilhosPar() . ' filho(s)';
+    echo '<br/>';
 
     // criando nova instância de funcionário -> novo funcionário = x
     $x = new Funcionario();
-    echo $x->resumirCadFunc().'<br/>';
-    $x->modificarNumFilhos(1);
-    echo $x->resumirCadFunc().'<br/>';
-
+    $y->setNome('Maria');
+    $y->setNumFilhos(0);
+    echo $y->getNome() . ' possui ' . $y->getNumFilhosPar() . ' filho(s)';
 ?>
