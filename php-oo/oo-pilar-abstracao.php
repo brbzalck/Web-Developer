@@ -50,7 +50,9 @@
         // função que recupera os atributos da classe e retorna uma str
         function resumirCadFunc() {
             // $this para acessar atributos da classe
-            return "$this->nomePar possui $this->numFilhosPar filho(s)";
+            // usando método __get dentro de outro método resumirCadFunc()
+            return $this->__get('cargo') .' '. $this->__get('nomePar') . ' possui ' .  $this->__get('numFilhosPar'). ' filho(s),
+            recebe R$ '. $this->__get('salario') . ' e seu telefone para contato é: ' . $this->__get('telefonePar');
         }
 
         // função que recebe argumento para modificar num filhos
@@ -67,15 +69,17 @@
     $y->__set('telefonePar', '(24)99844-3367');
     $y->__set('cargo', 'Cabo');
     $y->__set('salario', 3500);
-    // echo $y->resumirCadFunc();
+    echo $y->resumirCadFunc().'<br/>';
     // usando as função get que retorna o valor dos atributos do objeto
-    echo $y->__get('cargo') .' '. $y->__get('nomePar') . ' possui ' . $y->__get('numFilhosPar') . ' filho(s), recebe '.
+    echo $y->__get('cargo') .' '. $y->__get('nomePar') . ' possui ' . $y->__get('numFilhosPar') . ' filho(s), recebe R$ '.
     $y->__get('salario'). ' e seu telefone para contato é: '. $y->__get('telefonePar') ;
     echo '<br/>';
 
     // criando nova instância de funcionário -> novo funcionário = x
     $x = new Funcionario();
-    $x->__set('nome', 'Maria');
-    $x->__set('numFilhos', 1);
-    echo $x->__get('nome') . ' possui ' . $x->__get('numFilhos') . ' filho(s)';
+    $x->__set('nomePar', 'Maria');
+    $x->__set('numFilhosPar', 1);
+    echo $x->__get('nomePar') . ' possui ' . $x->__get('numFilhosPar') . ' filho(s)<br/>';
+    echo $x->resumirCadFunc().'<br/>';
+
 ?>
