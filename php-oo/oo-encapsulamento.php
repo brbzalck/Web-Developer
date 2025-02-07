@@ -6,8 +6,8 @@
         protected $sobrenome = 'Silva';
         public $humor = 'Feliz';
 
-        // // Usando uma função interna para acessar o atributo private
-        // // e retornar o valor por meio desse método público
+        // Usando uma função interna para acessar o atributo private
+        // e retornar o valor por meio desse método público
         // public function getSobrenome() {
         //     return $this->sobrenome;
         // }
@@ -19,6 +19,7 @@
         //     }
         // }
 
+        // MÉTODOS MÁGICOS
         public function __get($attr)
         {
             // gettando o valor da DENTRO DA VARIAVEL recebida para $this->nome/sobrenome/humor
@@ -43,11 +44,26 @@
         }
     }
 
-    $pai = new Pai();
+    class Filho extends Pai {
+        public function __construct() {
+            // // exibir os métodos publicos do objeto
+            echo '<pre>';
+                print_r(get_class_methods($this));
+            echo '</pre>';
+        }
+    }
+
+    // $pai = new Pai();
     // com o getter público e interno, é possível agora acessar e modificar private/protected
     // echo $pai->nome;
-    echo $pai->nome = 'Lucas';
-    
+    // echo $pai->nome = 'Lucas<br>';
+    // echo $pai->executarAcao();
 
+    $filho = new Filho();
+    echo '<pre>';
+        print_r($filho);
+    echo '</pre>';
+
+    $filho->executarAcao();
 
 ?>
