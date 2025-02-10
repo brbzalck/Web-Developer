@@ -21,20 +21,24 @@
       			<div class="col-md-12">
   				
 					<div class="card-body font-weight-bold">
-						<form>
+						<!-- encaminhando o formuláio para processa_envio.php com método post(protegido) -->
+						<form action="processa_envio.php" method="post">
 							<div class="form-group">
 								<label for="para">Para</label>
-								<input type="text" class="form-control" id="para" placeholder="joao@dominio.com.br">
+								<!-- colocando name para conseguir resgatar os valores do lado do backend -->
+								<input name="para" type="text" class="form-control" id="para" placeholder="joao@dominio.com.br">
 							</div>
-
-							<div class="form-group">
+							
 								<label for="assunto">Assunto</label>
-								<input type="text" class="form-control" id="assunto" placeholder="Assundo do e-mail">
+								<!-- colocando name para conseguir resgatar os valores do lado do backend -->
+							<div class="form-group">
+								<input name="assunto" type="text" class="form-control" id="assunto" placeholder="Assundo do e-mail">
 							</div>
 
 							<div class="form-group">
 								<label for="mensagem">Mensagem</label>
-								<textarea class="form-control" id="mensagem"></textarea>
+								<!-- colocando name para conseguir resgatar os valores do lado do backend -->
+								<textarea name="msg" class="form-control" id="mensagem"></textarea>
 							</div>
 
 							<button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
