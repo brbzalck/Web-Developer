@@ -15,15 +15,25 @@
     $conexao = new PDO($dsn, $usuario, $senha);
     
     $query = '
-        select * from tb_usuarios where id = 8
+        select * from tb_usuarios
     ';
     
     // query retorna um PDOStatement - faz o comando e retorna dados para $stmt
     $stmt = $conexao->query($query);
 
-    echo '<pre>';
-        print_r($stmt);
-    echo '</pre>';
+    // jogando o retorno de dados da query direto para foreach
+    // pegando esse retorno e separando índice que contem valores
+    // ou seja, separando diretamente esse retorno em índice que cotem valores
+    foreach($conexao->query($query) as $indice => $valores) {
+        // acessando os valores de foreach
+        print_r($valores['nome']);
+        echo '<hr>';
+    }
+
+
+    // echo '<pre>';
+    //     print_r($stmt);
+    // echo '</pre>';
     
     // fetchAll é um método de PDOStatement que por sua vez pega o retorno de query e joga em uma array
     // $lista = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -33,15 +43,21 @@
     
     // fetch é usado para selecionar apenas um registro
     // ideal quando a query é específica no retorno de apenas uma linha de dados
-    $usuarioFetch = $stmt->fetch(PDO::FETCH_OBJ);
+    $lista_usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // echo '<pre>';
+    //     print_r($lista_usuarios);
+    // echo '<pre>';
 
-    echo '<pre>';
-        print_r($usuarioFetch);
-    echo '<pre>';
+    // iterando lista e retornando índice da array e valores contidos
+    // foreach($lista_usuarios as $key => $value) {
+    //     // print_r($key);
+    //     print_r($value);
+    //     echo '<hr>';
+    // }
 
     // Como retorna uma única array, pode se acessar o atributo direto da variável
-    echo $usuarioFetch->nome;
+    // echo $usuarioFetch->nome;
 
     // dependendo do retorno, deve acessar como array de array
     // echo $lista[2][2];
