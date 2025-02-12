@@ -36,7 +36,7 @@
 								<h4>Nova tarefa</h4>
 								<hr />
 
-								<!-- direcionando formulário para tarefas_controller.php -->
+								<!-- transpotando dados com post(sigilo) e direcionando formulário para tarefas_controller.php-->
 								<form method="post" action="tarefa_controller.php">
 									<div class="form-group">
 										<label>Descrição da tarefa:</label>
