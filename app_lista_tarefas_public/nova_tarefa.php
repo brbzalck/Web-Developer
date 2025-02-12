@@ -36,10 +36,12 @@
 								<h4>Nova tarefa</h4>
 								<hr />
 
-								<form>
+								<!-- direcionando formulário para tarefas_controller.php -->
+								<form method="post" action="tarefa_controller.php">
 									<div class="form-group">
 										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
+										<!-- colocando name para o $_POST recuperar a infromação do input -->
+										<input type="text" name="tarefa" class="form-control" placeholder="Exemplo: Lavar o carro">
 									</div>
 
 									<button class="btn btn-success">Cadastrar</button>
