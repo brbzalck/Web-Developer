@@ -9,17 +9,27 @@
     $conexao = new PDO($dsn, $usuario, $senha);
 
     $query = "select * from tb_usuarios where ";
-    $query .= "email = '{$_POST['usuario']}' ";
-    $query .= "AND senha = '{$_POST['senha']}'";
+    $query .= "email = :usuario ";
+    $query .= "AND senha = :senha ";
 
-    echo $query.'<br>';
+    // método prepare utilizado para separar query dos valores
+    $stmt = $conexao->prepare($query);
+    
+    // bindValue(valor de ligação) utilizado para fazer a associação de valores de forma segura
+    $stmt->bindValue(':usuario', $_POST['usuario']);
+    // colocando na query valores de forma protegida de sql_injection
+    // o input será tratado como um texto de forma geral, impedindo concatenação de sql por meio do usuário
+    $stmt->bindValue(':senha', $_POST['senha']);
 
-    $stmt = $conexao->query($query);
+    // executando consulta depois das tratativas
+    $stmt->execute();
+
     $usuario = $stmt->fetch();
 
     echo '<pre>';
-        print_r($usuario);
-    echo '<pre>';
+    print_r($usuario);
+    echo '</pre>';
+
 
     } catch(PDOException $e) {
         echo 'Erro:' . $e->getCode() . '<br>Mensagem:' . $e->getMessage();
