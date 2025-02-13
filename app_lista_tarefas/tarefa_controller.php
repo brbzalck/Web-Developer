@@ -33,6 +33,18 @@
 
     // colocando mais uma condicional de acao = recuperar, para direcionamento
     } else if($acao == 'recuperar')  {
-        echo 'chegamos até aqui';
+        
+        // instanciando da classe Tarefa e Conexao, pois a classe TarefaService precisa dessas duas instâncias
+        $tarefa = new Tarefa();
+        $conexao = new Conexao();
+
+        // classe TarefaService que faz o CRUD no banco de dados
+        $tarefaService = new TarefaService($conexao, $tarefa);
+
+        // usando o método recuperar
+        $tarefas = $tarefaService->recuperar();
+
+
+
     }
 ?>

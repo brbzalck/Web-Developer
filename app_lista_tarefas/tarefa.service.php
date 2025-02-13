@@ -31,6 +31,21 @@
         }
         // READ
         public function recuperar() {
+            // select nas colunas específicas de cada tabela
+            $query = 'select 
+            t.id, s.status, t.tarefa 
+                    from 
+            tb_tarefas as t left join tb_status as s on (t.id_status = s.id)
+            ';
+            // indicando a relação das tabelas t e s com on(relação)
+
+            // usando a conexão recebida na Classe para manipulação no banco de dados
+            $stmt = $this->conexao->prepare($query);
+            // usando prepare para posterior execução da query, mesmo que não haja inserção de dados externos(poderia usar query)
+            $stmt->execute();
+
+            // fazendo o método retornar uma array de objetos(cada linha de dados da tabela vira um objeto, e cada coluna atributos)
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
 
         }
         // UPDATE

@@ -6,6 +6,12 @@
 	require 'tarefa_controller.php';
 	// e executará o código que corresponde a determinada acao
 
+	// // como todas_tarefas.php faz o require de tarefa_controller.php
+	// echo '<pre>';
+	// // ele tem acesso a variável $tarefas que contem todos as taferas numa array de objetos(tarefas)
+	// print_r($tarefas);
+	// echo '</pre>';
+
 ?>
 
 <html>
@@ -46,24 +52,21 @@
 								<h4>Todas tarefas</h4>
 								<hr />
 
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Lavar o carro (status)</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;"></abs>
-										<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;"></a>
-										<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;"></a>
-									</div>
-								</div>
-
-								<div class="row mb-3 d-flex align-items-center tarefa">
-									<div class="col-sm-9">Passear com o cachorro (status)</div>
-									<div class="col-sm-3 mt-2 d-flex justify-content-between">
-										<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;"></a>
-										<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;"></a>
-										<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;"></a>
-									</div>
-								</div>
+								<?php foreach($tarefas as $indice => $tarefa) { ?>
 								
+									<div class="row mb-3 d-flex align-items-center tarefa">
+										<!-- USANDO A TAG DE IMPRESSÃO PARA EXIBIR NA TELA -->
+										<!-- a tag de <?php ?> não funcionará aqui, porque não se trata de código e sim de exibição de dados -->
+										<div class="col-sm-9"> <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>) </div>
+										<div class="col-sm-3 mt-2 d-flex justify-content-between">
+											<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;"></a>
+											<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;"></a>
+											<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;"></a>
+										</div>
+									</div>
+
+								<?php } ?>
+
 							</div>
 						</div>
 					</div>
