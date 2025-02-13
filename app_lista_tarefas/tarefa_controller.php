@@ -7,10 +7,6 @@
     // o diretório tem como base o caminho do público
     require "../app_lista_tarefas/conexao.php";
 
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-
     // criando objeto de Tarefa
     $tarefa = new Tarefa();
     // usando o objeto tarefa para settar o atributo do obj com o atributo do input | $_POST/name="" -> front end
@@ -24,10 +20,7 @@
     // Usando método inserir de tarefaService
     $tarefaService->inserir();
 
-    
-    echo '<pre>';
-    print_r($tarefaService);
-    echo '</pre>';
-
+    // após adicionar tarefa, redireciona para nova_tarefa.php com parâmetro de sucesso=1
+    header('Location: nova_tarefa.php?sucesso=1')
 
 ?>

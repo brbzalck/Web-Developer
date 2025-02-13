@@ -19,6 +19,13 @@
 			</div>
 		</nav>
 
+		<!-- se o parâmetro sucesso=1 que veio do header location, regatado pelo método $_GET existir -->
+		 <!-- E TAMBÉM se sucesso for igual a 1, executa mensagem de sucesso para tarefa adicionadas -->
+		<?php if(isset($_GET['sucesso']) and $_GET['sucesso'] == 1) { ?>
+			<div class="bg-success pt-2 text-white d-flex justify-content-center">
+				<h5>Tarefa inserida com sucesso</h5>
+			</div>
+		<?php } ?>
 		<div class="container app">
 			<div class="row">
 				<div class="col-md-3 menu">
