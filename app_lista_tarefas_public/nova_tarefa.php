@@ -44,7 +44,8 @@
 								<hr />
 
 								<!-- transpotando dados com post(sigilo) e direcionando formulário para tarefas_controller.php-->
-								<form method="post" action="tarefa_controller.php">
+								 <!-- adicionando parâmetro ao direcionamento, para quando inserir dados executar determinado código no controller  -->
+								<form method="post" action="tarefa_controller.php?acao=inserir">
 									<div class="form-group">
 										<label>Descrição da tarefa:</label>
 										<!-- colocando name para o $_POST recuperar a infromação do input -->

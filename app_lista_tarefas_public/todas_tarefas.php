@@ -1,3 +1,13 @@
+<?php
+
+	// atribuindo valor para a acao, para o controller executar acao de recuperação de dados
+	$acao = 'recuperar';
+	// chamando o controller que receberá a variável acao de todas_tarefas.php
+	require 'tarefa_controller.php';
+	// e executará o código que corresponde a determinada acao
+
+?>
+
 <html>
 	<head>
 		<meta charset="utf-8" />
