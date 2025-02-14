@@ -60,7 +60,7 @@
         // tarefaService vai retornar true(1) ou false(0) do método atualizar(execute(retorna qnts linhas foram modificadas))
         if($tarefaService->atualizar()) {
             // caso atualize, redireciona para todas_tarefas novamente com dados atualizados no back e no front
-            header('Location: todas_tarefas.php');
+            header('Location: index.php');
         }
         // acao remover recebida pela função remover(js)
     } else if($acao == 'remover') {

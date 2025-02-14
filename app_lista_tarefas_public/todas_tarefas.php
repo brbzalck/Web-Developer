@@ -111,7 +111,7 @@
 					<ul class="list-group">
 						<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
 						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item active"><a href="#">Todas tarefas</a></li>
+						<li class="list-group-item active"><a href="#">Tarefas realizadas</a></li>
 					</ul>
 				</div>
 
@@ -119,34 +119,31 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Todas tarefas</h4>
+								<h4>Tarefas realizadas</h4>
 								<hr />
-
+								<!-- iterando a lista de objetos $tarefas uma por uma, onde $tarefa dará acesso aos atributos do obj -->
+								<!-- iterando a lista de objetos $tarefas uma por uma, onde $tarefa dará acesso aos atributos do obj -->
 								<?php foreach($tarefas as $indice => $tarefa) { ?>
-								
-									<div class="row mb-3 d-flex align-items-center tarefa">
-										<!-- atribuindo id da tarefa de forma dinâmica -->
-										<div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
-											<!-- USANDO A TAG DE IMPRESSÃO PARA EXIBIR NA TELA -->
-											<!-- a tag de <?php ?> não funcionará aqui, porque não se trata de código e sim de exibição de dados -->
-											 <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
-										</div>
-										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<!-- colocando função javascript que ao clicar no botão é executada(recebendo id como argumento)-->
-											<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;" onclick="remover(<?= $tarefa->id ?>)"></a>
-											
-											<!-- se caso tarefa estiver pendente, é possível editar ou marcar como concluida -->
-											<?php if($tarefa->status == 'pendente') { ?>
+									<!-- se caso tarefa estiver pendente, é possível editar ou marcar como concluida -->
+									<?php if($tarefa->status == 'realizado') { ?>
+										<div class="row mb-3 d-flex align-items-center tarefa">
+											<!-- atribuindo id da tarefa de forma dinâmica -->
+											<div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
+												<!-- USANDO A TAG DE IMPRESSÃO PARA EXIBIR NA TELA -->
+												<!-- a tag de <?php ?> não funcionará aqui, porque não se trata de código e sim de exibição de dados -->
+												<?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
+											</div>
+											<div class="col-sm-3 mt-2 d-flex justify-content-between">
+												<!-- colocando função javascript que ao clicar no botão é executada(recebendo id como argumento)-->
+												<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;" onclick="remover(<?= $tarefa->id ?>)"></a>
 												<!-- quando clicar em editar, executa script function editar(que recebe o id da tarefa e qual tarefa é) -->
 												<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></a>
 												<!-- quando clicar em concluir, executa script function marcarRealizada(que recebe id de argumento) -->
 												<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;" onclick="marcarRealizada(<?= $tarefa->id ?>)"></a>
-											<?php } ?>
+											</div>
 										</div>
-									</div>
-
+									<?php } ?>
 								<?php } ?>
-
 							</div>
 						</div>
 					</div>
