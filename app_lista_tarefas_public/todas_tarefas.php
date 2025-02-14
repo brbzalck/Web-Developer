@@ -76,6 +76,13 @@
 				tarefa.insertBefore(form, tarefa[0])
 			
 			}
+
+			// função remover que recebe id
+			function remover(id) {
+				// ao clicar recarrega a página com parametro de acao e id de forma dinâmica
+				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+			}
+
 		</script>
 	
 	
@@ -118,7 +125,8 @@
 											 <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;"></a>
+											<!-- colocando função javascript que ao clicar no botão é executada(recebendo id como argumento)-->
+											<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;" onclick="remover(<?= $tarefa->id ?>)"></a>
 											<!-- quando clicar em editar, executa script function editar(que recebe o id da tarefa e qual tarefa é) -->
 											<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></a>
 											<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;"></a>

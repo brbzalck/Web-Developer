@@ -68,9 +68,17 @@
         // DELETE
         public function remover() {
 
+            // delete de tb_tarefas onde o id = :id recebido do objeto tarefa
+            $query = 'delete from tb_tarefas where id = :id';
+            // usando conexão para preparar query para execução
+            $stmt = $this->conexao->prepare($query);
+            // atribuindo valor para a $query de forma protegida
+            $stmt->bindValue(':id', $this->tarefa->__get('id'));
+            // executando query
+            $stmt->execute();
+
+            // ao remover, redireciona novamente a todas_tarefas.php
+            header('location: todas_tarefas.php');
         }
-
-
     }
-
 ?>

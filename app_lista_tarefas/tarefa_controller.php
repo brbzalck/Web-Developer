@@ -62,5 +62,19 @@
             // caso atualize, redireciona para todas_tarefas novamente com dados atualizados no back e no front
             header('Location: todas_tarefas.php');
         }
+        // acao remover recebida pela função remover(js)
+    } else if($acao == 'remover') {
+
+        $tarefa = new Tarefa();
+        // settando id pelo id de _get recebido da função remover(js)
+        $tarefa->__set('id', $_GET['id']);
+
+        // criando nova conexão
+        $conexao = new Conexao();
+
+        // criando nova tarefaService para CRUD
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        // executando método para remover
+        $tarefaService->remover();
     }
 ?>
