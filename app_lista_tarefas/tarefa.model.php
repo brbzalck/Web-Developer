@@ -11,6 +11,8 @@
         }
         public function __set($attr, $value) {
             $this->$attr = $value;
+            // agora __set não apenas atribui valor, mas também retorna o próprio objeto
+            return $this;
         }
     }
 

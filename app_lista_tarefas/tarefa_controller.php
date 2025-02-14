@@ -49,8 +49,8 @@
         // instanciando nova tarefa
         $tarefa = new Tarefa();
         // settando novos valores resgatados pelo post no objeto tarefa e nos atributos id e tarefa
-        $tarefa->__set('id', $_POST['id']);    
-        $tarefa->__set('tarefa', $_POST['tarefa']);
+        $tarefa->__set('id', $_POST['id'])->__set('tarefa', $_POST['tarefa']);
+        // agora o método __set retorna o próprio objeto, podendo utilizar novamento o método sem precisar chamar novamente o obj
         
         // criando conexão com o banco
         $conexao = new Conexao();

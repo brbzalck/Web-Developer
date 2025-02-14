@@ -51,14 +51,17 @@
         // UPDATE
         public function atualizar() {
             // atualiza em tb_tarefas na coluna tarefa = :tarefa recebida pelo objeto tarefa onde o id = :id recebido pelo objeto tarefa
-            $query = 'update tb_tarefas set tarefa = :tarefa where id = :id';
+            $query = 'update tb_tarefas set tarefa = ? where id = ?';
+            // :tarefa :id pode ser representado por ? ?
 
             // usando a conexão para preparar a query para execução
             $stmt = $this->conexao->prepare($query);
             // agora stmt vira um objeto de PDOStatement, e recebe o método bindValue
-            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+            $stmt->bindValue(1, $this->tarefa->__get('tarefa'));
+            // agora para substiruir um ? ? usa-se 1 2
+
             // substituindo de maneira segura :id/:tarefa da query, pelos atributos do objeto tarefa resgatados pelo método __get 
-            $stmt->bindValue(':id', $this->tarefa->__get('id'));
+            $stmt->bindValue(2, $this->tarefa->__get('id'));
             // executando query(aqui retorna true ou false, dependendo se hover atualização ou não)
             return $stmt->execute();
         }
