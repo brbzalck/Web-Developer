@@ -83,6 +83,13 @@
 				location.href = 'todas_tarefas.php?acao=remover&id='+id;
 			}
 
+			// função de concluir tarefa
+			function marcarRealizada(id) {
+				// jogando ao href acao=marcarRealizada e id=(argumento recebido na função que contem id)
+				// para o $_GET conseguir resgatar os dois dados
+				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+			}
+
 		</script>
 	
 	
@@ -127,9 +134,14 @@
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<!-- colocando função javascript que ao clicar no botão é executada(recebendo id como argumento)-->
 											<a class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;" onclick="remover(<?= $tarefa->id ?>)"></a>
-											<!-- quando clicar em editar, executa script function editar(que recebe o id da tarefa e qual tarefa é) -->
-											<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></a>
-											<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;"></a>
+											
+											<!-- se caso tarefa estiver pendente, é possível editar ou marcar como concluida -->
+											<?php if($tarefa->status == 'pendente') { ?>
+												<!-- quando clicar em editar, executa script function editar(que recebe o id da tarefa e qual tarefa é) -->
+												<a class="fas fa-edit fa-lg text-info" style="cursor: pointer;" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></a>
+												<!-- quando clicar em concluir, executa script function marcarRealizada(que recebe id de argumento) -->
+												<a class="fas fa-check-square fa-lg text-success" style="cursor: pointer;" onclick="marcarRealizada(<?= $tarefa->id ?>)"></a>
+											<?php } ?>
 										</div>
 									</div>
 

@@ -76,5 +76,25 @@
         $tarefaService = new TarefaService($conexao, $tarefa);
         // executando método para remover
         $tarefaService->remover();
+        
+        header('Location: todas_tarefas.php');
+
+    // se acao for marcarRealizada
+    } else if($acao= 'marcarRealizada') {
+        $tarefa = new Tarefa();
+        // atribuindo para model Tarefa o id resgatado do front, e atualizando valor de id_status pois estamos concluindo tarefa
+        $tarefa->__set('id', $_GET['id'])->__set('id_status', 2);
+
+        // criando nova conexão com banco de dados
+        $conexao = new Conexao();
+
+        // criando tarefaService para CRUD
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        // executando método que conclui tarefa
+        $tarefaService->marcarRealizada();
+
+        // ao terminar de atualizar no banco e no model tarefa, redireciona para todas_tarefas.php
+        header('Location: todas_tarefas.php');
+
     }
 ?>

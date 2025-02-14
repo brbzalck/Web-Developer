@@ -80,5 +80,20 @@
             // ao remover, redireciona novamente a todas_tarefas.php
             header('location: todas_tarefas.php');
         }
+        public function marcarRealizada() {
+
+
+            $query = 'update tb_tarefas set id_status = ? where id = ?';
+            // usando conexão para preparar query para execução
+            $stmt = $this->conexao->prepare($query);
+            // atribuindo valor para a $query de forma protegida
+            $stmt->bindValue(1, $this->tarefa->__get('id_status'));
+            $stmt->bindValue(2, $this->tarefa->__get('id'));
+            // executando query
+            $stmt->execute();
+
+            // ao remover, redireciona novamente a todas_tarefas.php
+            header('location: todas_tarefas.php');
+        }
     }
 ?>
