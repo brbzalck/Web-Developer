@@ -60,7 +60,11 @@
         // tarefaService vai retornar true(1) ou false(0) do método atualizar(execute(retorna qnts linhas foram modificadas))
         if($tarefaService->atualizar()) {
             // caso atualize, redireciona para todas_tarefas novamente com dados atualizados no back e no front
-            header('Location: index.php');
+            if(isset($_GET['pag']) and $_GET['pag'] == 'todas_taredas') {
+                header('Location: todas_tarefas.php');
+            } else {
+                header('Location: index.php');
+            }
         }
         // acao remover recebida pela função remover(js)
     } else if($acao == 'remover') {
@@ -77,7 +81,11 @@
         // executando método para remover
         $tarefaService->remover();
         
-        header('Location: todas_tarefas.php');
+        if(isset($_GET['pag']) and $_GET['pag'] == 'todas_taredas') {
+            header('Location: todas_tarefas.php');
+        } else {
+            header('Location: index.php');
+        }
 
     // se acao for marcarRealizada
     } else if($acao= 'marcarRealizada') {
@@ -94,7 +102,10 @@
         $tarefaService->marcarRealizada();
 
         // ao terminar de atualizar no banco e no model tarefa, redireciona para todas_tarefas.php
-        header('Location: todas_tarefas.php');
-
+        if(isset($_GET['pag']) and $_GET['pag'] == 'todas_taredas') {
+            header('Location: todas_tarefas.php');
+        } else {
+            header('Location: index.php');
+        }
     }
 ?>

@@ -74,14 +74,14 @@
 			// função remover que recebe id
 			function remover(id) {
 				// ao clicar recarrega a página com parametro de acao e id de forma dinâmica
-				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+				location.href = 'index.php?acao=remover&id='+id;
 			}
 
 			// função de concluir tarefa
 			function marcarRealizada(id) {
 				// jogando ao href acao=marcarRealizada e id=(argumento recebido na função que contem id)
 				// para o $_GET conseguir resgatar os dois dados
-				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+				location.href = 'index.php?acao=marcarRealizada&id='+id;
 			}
 
 		</script>
@@ -104,7 +104,7 @@
 					<ul class="list-group">
 						<li class="list-group-item active"><a href="#">Tarefas pendentes</a></li>
 						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item"><a href="todas_tarefas.php">Todas tarefas</a></li>
+						<li class="list-group-item"><a href="todas_tarefas.php">Tarefas realizadas</a></li>
 					</ul>
 				</div>
 

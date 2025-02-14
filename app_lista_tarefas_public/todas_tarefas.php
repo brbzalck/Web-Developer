@@ -31,7 +31,7 @@
 				// criar um form de edição
 				let form = document.createElement('form')
 				// colocando redirecionamento do formulário para a controller com o parâmetro atualizar
-				form.action = 'tarefa_controller.php?acao=atualizar'
+				form.action = 'tarefa_controller.php?pag=todas_taredas&acao=atualizar'
 				form.method = 'post'
 				form.className = 'row'
 
@@ -80,14 +80,14 @@
 			// função remover que recebe id
 			function remover(id) {
 				// ao clicar recarrega a página com parametro de acao e id de forma dinâmica
-				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+				location.href = 'todas_tarefas.php?pag=todas_taredas&acao=remover&id='+id;
 			}
 
 			// função de concluir tarefa
 			function marcarRealizada(id) {
 				// jogando ao href acao=marcarRealizada e id=(argumento recebido na função que contem id)
 				// para o $_GET conseguir resgatar os dois dados
-				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+				location.href = 'todas_tarefas.php?pag=todas_taredas&acao=remover&id='+id;
 			}
 
 		</script>
