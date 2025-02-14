@@ -30,7 +30,8 @@
 				
 				// criar um form de edição
 				let form = document.createElement('form')
-				form.action = '#'
+				// colocando redirecionamento do formulário para a controller com o parâmetro atualizar
+				form.action = 'tarefa_controller.php?acao=atualizar'
 				form.method = 'post'
 				form.className = 'row'
 

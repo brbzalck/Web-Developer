@@ -44,7 +44,23 @@
         // usando o método recuperar
         $tarefas = $tarefaService->recuperar();
 
+        // acao recebida pelo action do javascript
+    } else if($acao == 'atualizar') {
+        // instanciando nova tarefa
+        $tarefa = new Tarefa();
+        // settando novos valores resgatados pelo post no objeto tarefa e nos atributos id e tarefa
+        $tarefa->__set('id', $_POST['id']);    
+        $tarefa->__set('tarefa', $_POST['tarefa']);
+        
+        // criando conexão com o banco
+        $conexao = new Conexao();
 
-
+        // instânciando nova tarefa service para CRUD
+        $tarefaService = new TarefaService($conexao, $tarefa);
+        // tarefaService vai retornar true(1) ou false(0) do método atualizar(execute(retorna qnts linhas foram modificadas))
+        if($tarefaService->atualizar()) {
+            // caso atualize, redireciona para todas_tarefas novamente com dados atualizados no back e no front
+            header('Location: todas_tarefas.php');
+        }
     }
 ?>
